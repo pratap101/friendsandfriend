@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!--top menu item--> 
+        <menuitem name="Agriculture Management"
+            id="menu_agriculture_registration"/>
+        <menuitem id="agriculture_details" parent="menu_agriculture_registration" name="Agricultural Details" />    
+
+        
+        <!--land details starting -->
+        <!--start menu entry for land-->
+        <menuitem id="menu_agriculture_1" parent="agriculture_details" name="Land Details"
+            action="land_registration"/>
+        <!--end menu entry for land-->    
+        
+        <!--start land form view-->
+        <record id="view_agriculture_form" model="ir.ui.view">
+            <field name="name">agriculture.details.info</field>
+            <field name="model">agriculture.details</field>
+            <field name="arch" type="xml">
+                <form string="agriculture">
+                    <group>
+                        <field name="area" bgcolor="green" fgcolor="yellow"/>
+                        <field name="length"/>
+                        <field name="width"/>
+                        <field name ="land_person" widget="many2many_tags"/>
+                        <field name="type_of_soil"/>
+                        <field name="geographical_area"/>
+                        <field name="land_name"/>
+                        <field name="code"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!--end land form view-->
+
+        <!--start land tree view-->
+        <record id="view_agriculture_land_tree" model="ir.ui.view">
+            <field name="name">agriculture.details.info</field>
+            <field name="model">agriculture.details</field>
+            <field name="arch" type="xml">
+               <tree string="agriculture">
+                       <field name="area"/>
+                        <field name="length"/>
+                        <field name="width"/>
+                        <field name="type_of_soil"/>
+                        <field name="geographical_area"/>
+                        <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <!--end land tree view-->
+        
+        
+        <!--start land action-->
+        <record id="land_registration" model="ir.actions.act_window">
+            <field name="name">Land Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">agriculture.details</field>
+            <field name="view_type">form</field>
+        </record>
+        <!--end land action-->
+        <!--land detail ending-->
+        
+        
+        <!--crop detail starting-->
+        <!--start menu entry for crop-->
+        <menuitem id="menu_agriculture_2" parent="agriculture_details" name="Crop Details"
+            action="crop_registration"/>
+        <!--start menu entry for crop-->
+        
+          <!--start crop form view -->
+        <record id="view_agriculture_crop_form" model="ir.ui.view">
+            <field name="name">crop.details.info</field>
+            <field name="model">crop.details</field>
+            <field name="arch" type="xml">
+                <form string="crop">
+                    <group>
+                        <field name="name"/>
+                        <field name="crop_type"/>
+                        <field name="seeds"/>
+                        <field name="per_hectare_yield"/>
+                        <field name="season"/>
+                    </group>
+                    <button 
+                          name="confirm" 
+                          string="Confirm Submition" 
+                          type="object"
+                    />
+                </form>
+            </field>
+        </record>
+        <!--end form view-->
+        
+        <!--start crop tree view-->
+        <record id="view_agriculture_tree" model="ir.ui.view">
+            <field name="name">crop.details.info</field>
+            <field name="model">crop.details</field>
+            <field name="arch" type="xml">
+               <tree string="crop">
+                        <field name="name"/>
+                        <field name="crop_type"/>
+                        <field name="seeds"/>
+                        <field name="per_hectare_yield"/>
+                        <field name="season"/>
+                </tree>
+            </field>
+        </record>
+        <!--end crop tree view-->
+        
+        <!--start crop action-->
+         <record id="crop_registration" model="ir.actions.act_window">
+            <field name="name">Crop Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crop.details</field>
+            <field name="view_type">form</field>
+        </record>
+        <!--end crop action-->
+        <!--ending crop detail-->
+        
+        <!--starting farming detail-->
+        <!--start menu entry for farming-->
+           <menuitem id="menu_agriculture_3" parent="agriculture_details" name="Farming"
+            action="farming"/> 
+        <!--end menu entry for farming-->  
+        <!--start farming form view -->
+        <record id="view_agriculture_farming_form" model="ir.ui.view">
+            <field name="name">farming.details.info</field>
+            <field name="model">farming.details</field>
+            <field name="arch" type="xml">
+                <form string="farming">
+                    <group>
+                        <field name="crop_name"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="land"/>
+                        <field name="person_name"/>
+                        <field name="land_info">
+                            <tree string="agriculture">
+                                <field name="area"/>
+                                <field name="length"/>
+                                <field name="width"/>
+                                <field name="type_of_soil"/>
+                                <field name="geographical_area"/>
+                                <field name="code"/>
+                             </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!--end farming form view-->
+        
+        <!--start farming tree view-->
+        <record id="view_agriculture_farming_tree" model="ir.ui.view">
+            <field name="name">farming.details.info</field>
+            <field name="model">farming.details</field>
+            <field name="arch" type="xml">
+               <tree string="farming">
+                       <field name="crop_name"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="land"/>
+                        <field name="person_name"/>
+                </tree>
+            </field>
+        </record>
+        <!--end farming tree view-->
+        
+        <!--start farming action-->
+           <record id="farming" model="ir.actions.act_window">
+            <field name="name">Farming Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">farming.details</field>
+            <field name="view_type">form</field>
+        </record>
+        <!--end farming action-->
+        <!--ending farming detail-->
+             
+   </data>
+</openerp>
