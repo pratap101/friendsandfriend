@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="pay_wedding_wizard">
+            <field name="name">Pay Fees</field>
+            <field name="model">pay.wedding.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Pay Wedding Fees">
+                    <sheet>
+                        <group>
+                            <field name="amount"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="pay" string="Pay" type="object"/>
+                        or
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="act_pay_wedding_wizard">
+            <field name="name">Pay wedding wizard</field>
+            <field name="res_model">pay.wedding.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="pay_wedding_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

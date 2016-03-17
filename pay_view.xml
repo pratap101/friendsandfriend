@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!--startind cheque wizard-->
+        <record model="ir.ui.view" id="pay_wizard">
+            <field name="name">Pay Fees</field>
+            <field name="model">pay.cheque</field>
+            <field name="arch" type="xml">
+                <form string="Pay Fees">
+                    <header>
+                         <h2 align="center">Payment By Cheque</h2>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="payment_type"/>
+                            <field name="party_name"/>
+                            <field name="bank"/>
+                            <field name="date"/>
+                            <field name="cheque_number"/>
+                            <field name="amount"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="proceed" string="Proceed" type="object"/>
+                        or
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+       
+        <record model="ir.actions.act_window" id="pay_btn">
+            <field name="name">Payment wizard</field>
+            <field name="res_model">pay.cheque</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="pay_wizard"/>
+            <field name="target">new</field>
+        </record>
+        <!--ending cheque wizard-->
+        
+        
+        
+            <!--starting cash wizard-->          
+            <record model="ir.ui.view" id="pay_wizard_cash">
+            <field name="name">Pay Fees By Cash</field>
+            <field name="model">pay.cash</field>
+            <field name="arch" type="xml">
+                <form string="Pay Fees By cash">
+                    <header>
+                         <h2 align="center">Payment By Cash</h2>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="payment_type"/>
+                            <field name="party_name"/>
+                            <field name="amount"/>
+                            <field name="date"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="proceed" string="Proceed" type="object"/>
+                        or
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+       
+        <record model="ir.actions.act_window" id="pay_btn_cash">
+            <field name="name">Payment wizard By Cash</field>
+            <field name="res_model">pay.cash</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="pay_wizard_cash"/>
+            <field name="target">new</field>
+        </record>
+        <!--ending cash wizard-->
+        
+        
+
+    </data>
+</openerp>
